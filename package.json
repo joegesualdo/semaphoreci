@@ -1,6 +1,6 @@
 {
   "name": "semaphoreci",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Unofficial SemaphoreCi command line tool.",
   "main": "./dist/index.js",
   "scripts": {

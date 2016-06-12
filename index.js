@@ -22,7 +22,7 @@ class SemaphoreCi {
         console.log("Must provide email and password")
         return;
       }
-      var nightmare = Nightmare({ show: false})
+      var nightmare = Nightmare({ show: true})
       nightmare
         .goto('https://semaphoreci.com/users/sign_in')
         .cookies.clear("remember_user_token")
@@ -36,7 +36,7 @@ class SemaphoreCi {
         .click("#new-project-button")
         .wait('a#refreshProjects')
         .click("a#refreshProjects")
-        .wait(1000)
+        .wait(5000)
         .type('input#search_projects', projectName)
         .wait(1000)
         .evaluate(function () {
@@ -60,10 +60,13 @@ class SemaphoreCi {
         return;
       }
       this.doesProjectExist(projectName)
-      .then(function(exists){
+      .then((exists) => {
+        if (!exists) {
+          console.log('Project does not exist')
+        }
         if (exists) {
           console.log(`Verified that project '${projectName}' does exist.`)
-          var nightmare = Nightmare({ show: false})
+          var nightmare = Nightmare({ show: true})
           nightmare
             .goto('https://semaphoreci.com/users/sign_in')
             .cookies.clear("remember_user_token")
