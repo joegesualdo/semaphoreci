@@ -81,7 +81,7 @@ class SemaphoreCi {
             .click("#new-project-button")
             .wait('a#refreshProjects')
             .click("a#refreshProjects")
-            .wait(1000)
+            .wait(5000)
             .click(".repositoryList li:first-child a")
             .inject('input#search_projects', projectName)
             .wait('a[data-branch-name="master"]')
