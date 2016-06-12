@@ -73,6 +73,7 @@ module.exports =
 	    this.config = {};
 	    this.config.email = config.email;
 	    this.config.password = config.password;
+	    this.config.show = config.show || false;
 	  }
 
 	  _createClass(SemaphoreCi, [{
@@ -86,7 +87,7 @@ module.exports =
 	          console.log("Must provide email and password");
 	          return;
 	        }
-	        var nightmare = Nightmare({ show: true });
+	        var nightmare = Nightmare({ show: _this.config.show });
 	        nightmare.goto('https://semaphoreci.com/users/sign_in').cookies.clear("remember_user_token").cookies.clear("_semaphoreappdotcom_session").goto('https://google.com').goto('https://semaphoreci.com/users/sign_in').insert(signinFormEmailInputSelector, _this.config.email).insert(signinFormPasswordInputSelector, _this.config.password).click(signinFormSubmitButtonSelector).wait('body#projects-index').click("#new-project-button").wait('a#refreshProjects').click("a#refreshProjects").wait(5000).type('input#search_projects', projectName).wait(1000).evaluate(function () {
 	          return document.querySelectorAll('.repositoryList li:not([style="display: none;"]')[0].querySelectorAll(".repositoryName")[0].childNodes[0].nodeValue.trim();
 	        }).end().then(function (firstProjectName) {
@@ -113,7 +114,7 @@ module.exports =
 	          }
 	          if (exists) {
 	            console.log('Verified that project \'' + projectName + '\' does exist.');
-	            var nightmare = Nightmare({ show: true });
+	            var nightmare = Nightmare({ show: _this2.config.show });
 	            nightmare.goto('https://semaphoreci.com/users/sign_in').cookies.clear("remember_user_token").cookies.clear("_semaphoreappdotcom_session").goto('https://google.com').goto('https://semaphoreci.com/users/sign_in').insert(signinFormEmailInputSelector, _this2.config.email).insert(signinFormPasswordInputSelector, _this2.config.password).click(signinFormSubmitButtonSelector).wait('body#projects-index').click("#new-project-button").wait('a#refreshProjects').click("a#refreshProjects").wait(1000).click(".repositoryList li:first-child a").inject('input#search_projects', projectName).wait('a[data-branch-name="master"]').click('a[data-branch-name="master"]')
 	            // TODO: Why isn't this working
 	            // .wait('a[data-owner-username="joegesualdo"]')

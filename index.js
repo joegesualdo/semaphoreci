@@ -14,6 +14,7 @@ class SemaphoreCi {
     this.config = {}
     this.config.email = config.email;
     this.config.password = config.password;
+    this.config.show = config.show || false;
   }
   doesProjectExist(projectName) {
     console.log(`Verifying that project '${projectName}' exists...`)
@@ -22,7 +23,7 @@ class SemaphoreCi {
         console.log("Must provide email and password")
         return;
       }
-      var nightmare = Nightmare({ show: true})
+      var nightmare = Nightmare({ show: this.config.show})
       nightmare
         .goto('https://semaphoreci.com/users/sign_in')
         .cookies.clear("remember_user_token")
@@ -66,7 +67,7 @@ class SemaphoreCi {
         }
         if (exists) {
           console.log(`Verified that project '${projectName}' does exist.`)
-          var nightmare = Nightmare({ show: true})
+          var nightmare = Nightmare({ show: this.config.show})
           nightmare
             .goto('https://semaphoreci.com/users/sign_in')
             .cookies.clear("remember_user_token")

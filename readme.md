@@ -40,6 +40,7 @@ semaphoreCi.createProject(projectName)
 |------|------|-------------|
 | email | `string` | The email associated with your Semaphoreci account|
 | password | `string` | The password associated with your Semaphoreci account|
+| show | `boolean` | Option to view the browser actions (defaults to false)
 
 Returns: `SemaphoreCi`, instance of semaphoreci 
 
