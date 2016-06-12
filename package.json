@@ -1,7 +1,7 @@
 {
   "name": "semaphoreci",
-  "version": "0.0.12",
-  "description": "Unofficial SemaphoreCi command line tool.",
+  "version": "0.0.13",
+  "description": "Unofficial SemaphoreCi node api",
   "main": "./dist/index.js",
   "scripts": {
     "test": "mocha test.js",

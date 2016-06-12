@@ -1,5 +1,5 @@
 ## semaphoreci 
-> Unofficial SemaphoreCi command line tool.
+> Unofficial SemaphoreCi node api.
 
 ## Install
 ```
