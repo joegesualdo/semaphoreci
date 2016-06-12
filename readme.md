@@ -80,5 +80,8 @@ semaphoreCi.createProject(projectName)
 })
 ```
 
+# Notes
+- Currently only works for node projects, as we are defaulting to Node v6.1 when creating the project.
+
 ## License
 MIT © [Joe Gesualdo]()

@@ -1,6 +1,6 @@
 {
   "name": "semaphoreci",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Unofficial SemaphoreCi node api",
   "main": "./dist/index.js",
   "scripts": {
