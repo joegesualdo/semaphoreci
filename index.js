@@ -82,8 +82,8 @@ class SemaphoreCi {
             .wait('a#refreshProjects')
             .click("a#refreshProjects")
             .wait(5000)
-            .click(".repositoryList li:first-child a")
             .type('input#search_projects', projectName)
+            .click(".repositoryList li:first-child a")
             .wait('a[data-branch-name="master"]')
             .click('a[data-branch-name="master"]')
             // TODO: Why isn't this working
